@@ -1,0 +1,4 @@
+OPENAI_API_KEY=sk-****************************
+QDRANT_COLLECTION_NAME=data-collection
+DATA_DIR_PATH=docs
+QUERY_DIR_PATH=query
