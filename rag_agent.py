@@ -1,8 +1,5 @@
 # Create a RAG LLM using Qdrant vector store. Read multiple user queries and return agent output
 
-import pandas as pd
-from typing import Any, List
-from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 from config import Config
 from vector_db import create_vector_store

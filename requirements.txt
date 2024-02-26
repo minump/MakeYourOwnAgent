@@ -3,3 +3,6 @@ langchain-community==0.0.20
 langchain-core==0.1.23
 langchain-openai==0.0.*
 openai==1.12.*
+pandoc==2.3
+pypandoc==1.13
+unstructured==0.11.*
