@@ -1,8 +1,10 @@
 # Create a RAG LLM using Qdrant vector store. Read multiple user queries and return agent output
 
 from langchain.chains import RetrievalQA
+from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAIEmbeddings
 from config import Config
-from vector_db import create_vector_store
+from vector_db import create_local_vector_store
 
 import sys
 import logging
@@ -24,8 +26,8 @@ def create_rag_agent(data_dir_path):
     """
     Create a RAG agent
     """
-    vector_store = create_vector_store(data_dir_path)
-    llm = Config.llm
+    vector_store = create_local_vector_store(data_dir_path)
+    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
 
     qa = RetrievalQA.from_chain_type(
         llm=llm,

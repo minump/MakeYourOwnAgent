@@ -160,6 +160,9 @@ cython_debug/
 #.idea/
 .DS_Store
 
+#external packages
+*.pkg
+
 # data folder
 docs
 

@@ -65,7 +65,7 @@ def get_data(data_dir_path: str):
     return texts, metadatas
     
 
-def create_vector_store(data_dir_path: str):
+def create_local_vector_store(data_dir_path: str):
     """
     Method to create a qdrant vectore store
     """
@@ -81,7 +81,7 @@ def create_vector_store(data_dir_path: str):
 
     docs: List[Document] = text_splitter.create_documents(texts=texts, metadatas=metadatas)
 
-    embeddings = Config.embeddings
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     collection_name = os.getenv('QDRANT_COLLECTION_NAME', "data-collection")
 
     # create vector Store
