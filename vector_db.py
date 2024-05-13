@@ -25,44 +25,8 @@ log = logging.getLogger(__name__)
 # Load .env file
 load_dotenv()
 
-def get_data(data_dir_path: str):
-    """
-    Method to get data using data loaders
-    Returns:
-    texts : List[str]
-    metadatas: List[str]
-    """
-    # load data 
-    log.info("Loading files from directory %s", data_dir_path)
-    csv_loader_kwargs = {
-                        "csv_args":{
-                            "delimiter": ",",
-                            "quotechar": '"',
-                            },
-                        }
-    dir_csv_loader = DirectoryLoader(data_dir_path, glob="**/*.csv", use_multithreading=True,
-                                loader_cls=CSVLoader, 
-                                loader_kwargs=csv_loader_kwargs,
-                                )
-    dir_pdf_loader = DirectoryLoader(data_dir_path, glob="**/*.pdf",
-                                     loader_cls=PyPDFLoader,
-                                    )
-    dir_rst_loader = DirectoryLoader(data_dir_path, glob="**/*.rst",
-                                     loader_cls=UnstructuredRSTLoader,
-                                    )
-    csv_data = dir_csv_loader.load()
-    pdf_data = dir_pdf_loader.load()
-    rst_data = dir_rst_loader.load()
-    csv_texts = [doc.page_content for doc in csv_data]
-    csv_metadatas = [doc.metadata for doc in csv_data]
-    pdf_texts = [doc.page_content for doc in pdf_data]
-    pdf_metadatas = [doc.metadata for doc in pdf_data]  # metadata={'source': 'data/select_data/The SHIELD Story_June2023.pdf', 'page': 8}
-    rst_texts = [doc.page_content for doc in rst_data]
-    rst_metadatas = [doc.metadata for doc in rst_data]
-    texts = csv_texts + pdf_texts + rst_texts
-    metadatas = csv_metadatas + pdf_metadatas + rst_metadatas
 
-    return texts, metadatas
+
     
 
 def create_local_vector_store(data_dir_path: str):

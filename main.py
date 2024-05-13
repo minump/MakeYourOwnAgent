@@ -4,7 +4,7 @@ import sys
 import logging
 import os
 from dotenv import load_dotenv
-from rag_agent import create_rag_agent
+from rag import create_rag_agent
 
 import pypandoc
 pypandoc.download_pandoc()
