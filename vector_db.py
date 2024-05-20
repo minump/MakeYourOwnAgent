@@ -37,7 +37,7 @@ def create_local_vector_store(data_dir_path: str):
     texts, metadatas = get_data(data_dir_path)
     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
             chunk_size=1000,
-            chunk_overlap=150,
+            chunk_overlap=200,
             separators=[
                 "\n\n", "\n", ". ", " ", ""
             ]  # try to split on paragraphs... fallback to sentences, then chars, ensure we always fit in context window

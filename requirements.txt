@@ -3,6 +3,7 @@ langchain==0.1.7
 langchain-community==0.0.20
 langchain-core==0.1.23
 langchain-openai==0.0.*
+langchainhub==0.1.15
 # openai
 openai==1.12.*
 # rst file loaders
