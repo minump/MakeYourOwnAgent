@@ -165,6 +165,9 @@ cython_debug/
 
 # data folder
 docs
+docs_copy
+docs_pdf
+# delta_docs
 
 # env
 .env
