@@ -1,12 +1,17 @@
 FROM jupyter/base-notebook
 
-WORKDIR /src
+LABEL maintainer="Minu Mathew <minum@illinois.edu>"
+ARG NB_USER="jovyan"
+ARG NB_UID="1000"
+ARG NB_GID="100"
 
-COPY delta_docs /src/delta_docs
-COPY requirements.txt .env /src
-
+USER root
+COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
-COPY rag.ipynb /src
+USER 1000
+COPY .env ./
+COPY delta_docs ./delta_docs
+COPY rag.ipynb ./
 
-CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--port", "8888", "--no-browser", "--allow-root"]
+# CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--port", "8888", "--no-browser", "--allow-root"]
