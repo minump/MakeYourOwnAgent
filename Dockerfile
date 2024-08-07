@@ -6,6 +6,8 @@ ARG NB_UID="1000"
 ARG NB_GID="100"
 
 USER root
+RUN apt-get update && apt-get install -y unzip
+
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
